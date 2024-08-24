@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+		<title>%</title>
+		<style>
+			body{
+			background-color: #000000;
+			text-align: center;
+			vertical-align: middle;
+			transition: background-color 2s ease;
+			}
+			.timer{
+			padding-top: 17%;
+			<!-- animation: shiver 0.25s infinite; -->
+			}
+			<!-- @keyframes shiver { -->
+            <!-- 0% { transform: translate(0, 0); } -->
+            <!-- 25% { transform: translate(-5px, 5px); } -->
+            <!-- 50% { transform: translate(5px, -5px); } -->
+            <!-- 75% { transform: translate(-5px, -5px); } -->
+            <!-- 100% { transform: translate(5px, 5px); } -->
+			<!-- } -->
+			.timer p{
+			font-family: "Chakra Petch", sans-serif;
+			color: #00AA00;
+			font-size: 40px;
+			transition: color 2s ease;
+			}
+			.postTimeText{
+			color: #7F7F7F;
+			padding: 3% 15%;
+			margin: 0 5%;
+			}
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function(){
+				var timEnd = new Date("2024-09-01T23:59:59"); <!--2024-09-01T23:59:59-->
+				var timer = document.getElementById("timer");
+				function bclick(){pl=true};
+				function countdown(){
+					function dDigNum(n){
+					return n<10?"0"+n:n;};
+					var timNow = new Date();
+					var timLeft = timEnd-timNow;
+					if (timLeft<=0){
+						timer.textContent = "00.00:00:00";
+						timer.style.color="#FFFFFF"
+						document.body.style.backgroundColor="#CC0000";
+						return;};
+					const D = Math.floor(timLeft/(1000*60*60*24));
+					const H = Math.floor((timLeft%(1000*60*60*24))/(1000*60*60));
+					const M = Math.floor((timLeft%(1000*60*60))/(1000*60));
+					const S = Math.floor((timLeft%(1000*60))/1000);
+					if (D<=0&&timLeft>0){
+						timer.style.color="#6A9A38"
+					};
+					timer.textContent = dDigNum(D)+"."+dDigNum(H)+":"+dDigNum(M)+":"+dDigNum(S);};
+				setInterval(countdown, 1000);
+				countdown();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="timer">
+			<p id="timer">00.00:00:00</p>
+			<div class="postTimeText">
+				<h3><i></i></h3>
+			</div>
+		</div>
+		<p>Кудин Антон</p>
+	</body>
+</html>
